@@ -14,6 +14,8 @@ def prettify(elem):
         xml_content = '\n'.join(xml_lines[1:])
     
     return xml_content
+    
+#_#_#_#_#_#_#_#_#_# change your test config #_#_#_#_#_#_#_#_#_#
 
 def generate_swift_config_sample():
     config = ET.Element('workload', name='swift-sample', description='sample benchmark for swift')
@@ -44,6 +46,8 @@ def generate_swift_config_sample():
     dispose = ET.SubElement(workflow, 'workstage', name='dispose')
     ET.SubElement(dispose, 'work', type='dispose', workers='1', config='containers=r(1,32)')
 
+#_#_#_#_#_#_#_#_#_#_# end of test config #_#_#_#_#_#_#_#_#_#_#
+    
     # Save the XML content to a file with pretty formatting
     xml_content = prettify(config)
 
