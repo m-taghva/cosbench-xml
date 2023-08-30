@@ -23,7 +23,7 @@ def generate_swift_config_sample():
     storage = ET.SubElement(config, 'storage', type='swift')
 
     auth = ET.SubElement(config, 'auth', type='swauth',
-                         config='username=test:tester;password=testing;auth_url=http://185.238.143.158:8080/auth/v1.0')
+                         config='username=test:tester;password=testing;auth_url=http://<IP>:8080/auth/v1.0')
 
     workflow = ET.SubElement(config, 'workflow')
 
