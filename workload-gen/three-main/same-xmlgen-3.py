@@ -1,5 +1,9 @@
 import xml.etree.ElementTree as ET
 
+class bcolors:
+    YELLOW = '\033[1;33m'
+    END = '\033[0m'
+
 def generate_xml(xml_file, max_worker_count):
     tree = ET.parse(xml_file)
     root = tree.getroot()
@@ -32,4 +36,4 @@ if __name__ == "__main__":
     max_worker_count = int(input("Enter the maximum number of workers: "))
 
     generate_xml(xml_file_name, max_worker_count)
-    print("Modified XML files generated.")
+    print(f"{bcolors.YELLOW}Modified XML files generated{bcolors.END}")
