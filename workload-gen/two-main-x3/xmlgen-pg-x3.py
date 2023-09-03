@@ -2,6 +2,10 @@ import xml.etree.ElementTree as ET
 import copy
 import os
 
+class bcolors:
+    YELLOW = '\033[1;33m'
+    END = '\033[0m'
+
 # Get user input for the XML file path
 xml_file_path = input("Enter the path to the XML configuration file: ")
 
@@ -59,7 +63,7 @@ while workers_main1 <= max_workers_main1:
     tree_copy = ET.ElementTree(new_root)
     tree_copy.write(updated_file_path)
     
-    print(f"XML configuration updated for main1={workers_main1} and main2={workers_main2} workers and saved to {updated_file_name}.")
+    print(f"XML configuration updated for main1={bcolors.YELLOW}{workers_main1}{bcolors.END} and main2={bcolors.YELLOW}{workers_main2}{bcolors.END} workers and saved to {updated_file_name}.")
     
     # Double the worker count for "main1" for the next iteration
     workers_main1 *= 2
