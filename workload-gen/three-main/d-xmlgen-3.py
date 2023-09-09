@@ -1,13 +1,24 @@
 import xml.etree.ElementTree as ET
 import copy
 import os
+import sys
 
 class bcolors:
     YELLOW = '\033[1;33m'
     END = '\033[0m'
 
-# Get user input for the XML file path
-xml_file_path = input("Enter the path to the XML configuration file: ")
+# Check if the correct number of command-line arguments are provided
+if len(sys.argv) != 3:
+    print("Usage: python script.py <xml_file> <max_workers>")
+    exit(1)
+
+# Get the XML file path and maximum number of workers from command-line arguments
+xml_file_path = sys.argv[1]
+try:
+    max_workers = int(sys.argv[2])
+except ValueError:
+    print("Invalid input for max_workers. Please provide a valid number.")
+    exit(1)
 
 # Parse the XML configuration file
 try:
@@ -18,16 +29,6 @@ except FileNotFoundError:
     exit(1)
 except ET.ParseError:
     print("Invalid XML file. Please provide a valid XML file.")
-    exit(1)
-
-# Get user input for the maximum number
-try:
-    max_workers = int(input("Enter the maximum number of workers: "))
-    if max_workers < 1:
-        print("Maximum number of workers must be at least 1.")
-        exit(1)
-except ValueError:
-    print("Invalid input. Please enter a valid number for the maximum workers.")
     exit(1)
 
 # Extract the original XML file name (without extension)
