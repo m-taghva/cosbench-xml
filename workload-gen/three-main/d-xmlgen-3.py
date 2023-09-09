@@ -34,6 +34,16 @@ except ET.ParseError:
 # Extract the original XML file name (without extension)
 original_file_name = os.path.splitext(os.path.basename(xml_file_path))[0]
 
+# Get the parent directory of the current working directory
+parent_directory = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+
+# Define the output directory for saving the files
+output_directory = os.path.join(parent_directory, "all-xml")
+
+# Ensure the output directory exists, or create it if it doesn't
+if not os.path.exists(output_directory):
+    os.makedirs(output_directory)
+
 # Define the three scenarios
 scenarios = [
     {"main1_range": True, "main2_range": False, "main3_range": False},
@@ -92,7 +102,8 @@ for i, scenario in enumerate(scenarios, start=1):
         elif i == 3:
             updated_file_name = f"{original_file_name}-type{i}-p1-g1-d{workers}.xml"
 
-        updated_file_path = os.path.join(os.path.dirname(xml_file_path), updated_file_name)
+        # Define the path to save the updated XML file in the output directory
+        updated_file_path = os.path.join(output_directory, updated_file_name)
 
         # Save the updated XML to a new file
         tree_copy = ET.ElementTree(new_root)
