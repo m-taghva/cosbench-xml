@@ -20,6 +20,16 @@ except ValueError:
     print("Invalid input for max_number. Please provide a valid number.")
     exit(1)
 
+# Get the parent directory of the current working directory
+parent_directory = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
+
+# Define the directory for saving output files
+output_directory = os.path.join(parent_directory, "all-xml")
+
+# Ensure the output directory exists, or create it if it doesn't
+if not os.path.exists(output_directory):
+    os.makedirs(output_directory)
+
 # Parse the XML configuration file
 try:
     tree = ET.parse(xml_file_path)
@@ -62,9 +72,9 @@ while workers_main2 <= max_number:
     if combination not in unique_combinations:
         unique_combinations.add(combination)
         
-        updated_file_path = os.path.join(os.path.dirname(xml_file_path), updated_file_name)
+        # Save the updated XML to the output directory
+        updated_file_path = os.path.join(output_directory, updated_file_name)
         
-        # Save the updated XML to a new file
         tree_copy = ET.ElementTree(new_root)
         tree_copy.write(updated_file_path)
         
@@ -98,9 +108,9 @@ while workers_main1 <= max_number:
     if combination not in unique_combinations:
         unique_combinations.add(combination)
         
-        updated_file_path = os.path.join(os.path.dirname(xml_file_path), updated_file_name)
+        # Save the updated XML to the output directory
+        updated_file_path = os.path.join(output_directory, updated_file_name)
         
-        # Save the updated XML to a new file
         tree_copy = ET.ElementTree(new_root)
         tree_copy.write(updated_file_path)
         
@@ -134,9 +144,9 @@ while workers_main2 <= max_number:
     if combination not in unique_combinations:
         unique_combinations.add(combination)
         
-        updated_file_path = os.path.join(os.path.dirname(xml_file_path), updated_file_name)
+        # Save the updated XML to the output directory
+        updated_file_path = os.path.join(output_directory, updated_file_name)
         
-        # Save the updated XML to a new file
         tree_copy = ET.ElementTree(new_root)
         tree_copy.write(updated_file_path)
         
@@ -170,9 +180,9 @@ while workers_main1 <= max_number:
     if combination not in unique_combinations:
         unique_combinations.add(combination)
         
-        updated_file_path = os.path.join(os.path.dirname(xml_file_path), updated_file_name)
+        # Save the updated XML to the output directory
+        updated_file_path = os.path.join(output_directory, updated_file_name)
         
-        # Save the updated XML to a new file
         tree_copy = ET.ElementTree(new_root)
         tree_copy.write(updated_file_path)
         
