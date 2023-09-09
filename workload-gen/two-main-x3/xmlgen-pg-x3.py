@@ -7,6 +7,9 @@ class bcolors:
     YELLOW = '\033[1;33m'
     END = '\033[0m'
 
+# Define the static output directory one level above the current working directory
+output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "all-xml"))
+
 def update_worker_counts(xml_file, max_workers_main1):
     tree = ET.parse(xml_file)
     root = tree.getroot()
@@ -25,7 +28,7 @@ def update_worker_counts(xml_file, max_workers_main1):
             work.set('workers', str(workers_main2))
 
         updated_file_name = f"{original_file_name}-p{workers_main1}-g{workers_main2}.xml"
-        updated_file_path = os.path.join(os.path.dirname(xml_file), updated_file_name)
+        updated_file_path = os.path.join(output_dir, updated_file_name)
 
         tree_copy = ET.ElementTree(new_root)
         tree_copy.write(updated_file_path)
@@ -34,7 +37,7 @@ def update_worker_counts(xml_file, max_workers_main1):
 
         workers_main1 *= 2
 
-    print("All configurations have been generated.")
+    print(f"All configurations have been generated in the '{output_dir}' directory.")
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
@@ -43,5 +46,8 @@ if __name__ == "__main__":
 
     xml_file_name = sys.argv[1]
     max_workers_main1 = int(sys.argv[2])
+
+    # Create the output directory if it doesn't exist
+    os.makedirs(output_dir, exist_ok=True)
 
     update_worker_counts(xml_file_name, max_workers_main1)
