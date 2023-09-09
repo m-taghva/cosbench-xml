@@ -55,7 +55,7 @@ while workers_main2 <= max_number:
         work.set('workers', str(workers_main2))
     
     # Generate a new XML file name based on the specified format
-    updated_file_name = f"{original_file_name}-type1-p1-g{workers_main2}-d.xml"
+    updated_file_name = f"{original_file_name}-type1-p1-g{workers_main2}.xml"
     
     # Check if the combination has already been processed
     combination = (1, workers_main2)
@@ -91,7 +91,7 @@ while workers_main1 <= max_number:
         work.set('workers', str(workers_main1))
     
     # Generate a new XML file name based on the specified format
-    updated_file_name = f"{original_file_name}-type2-p{workers_main1}-g1-d.xml"
+    updated_file_name = f"{original_file_name}-type2-p{workers_main1}-g1.xml"
     
     # Check if the combination has already been processed
     combination = (workers_main1, 1)
@@ -127,7 +127,7 @@ while workers_main2 <= max_number:
         work.set('workers', str(workers_main2))
     
     # Generate a new XML file name based on the specified format
-    updated_file_name = f"{original_file_name}-type3-p{max_number}-g{workers_main2}-d.xml"
+    updated_file_name = f"{original_file_name}-type3-p{max_number}-g{workers_main2}.xml"
     
     # Check if the combination has already been processed
     combination = (max_number, workers_main2)
@@ -163,7 +163,7 @@ while workers_main1 <= max_number:
         work.set('workers', str(workers_main1))
     
     # Generate a new XML file name based on the specified format
-    updated_file_name = f"{original_file_name}-type4-p{workers_main1}-g{max_number}-d.xml"
+    updated_file_name = f"{original_file_name}-type4-p{workers_main1}-g{max_number}.xml"
     
     # Check if the combination has already been processed
     combination = (workers_main1, max_number)
