@@ -1,3 +1,4 @@
+import sys
 import xml.etree.ElementTree as ET
 
 class bcolors:
@@ -25,12 +26,16 @@ def generate_xml(xml_file, max_worker_count):
     main1_session.set("workers", str(max_worker_count - 1))
     main2_session.set("workers", str(max_worker_count - 1))
 
-    modified_xml_file = xml_file.replace('.xml', f'-p{max_worker_count - 1}-g{max_worker_count - 1}.xml')
+    modified_xml_file = xml_file.replace('.xml', f'-{max_worker_count - 1}-{max_worker_count - 1}.xml')
     tree.write(modified_xml_file, encoding='utf-8', xml_declaration='<?xml version="1.0" encoding="UTF-8" ?>')
 
 if __name__ == "__main__":
-    xml_file_name = input("Enter the XML file name: ")
-    max_worker_count = int(input("Enter the maximum number of workers: "))
+    if len(sys.argv) != 3:
+        print("Usage: python script.py [input.xml] [max_worker_count]")
+        sys.exit(1)
+
+    xml_file_name = sys.argv[1]
+    max_worker_count = int(sys.argv[2])
 
     generate_xml(xml_file_name, max_worker_count)
     print(f"{bcolors.YELLOW}Modified XML files generated{bcolors.END}")
