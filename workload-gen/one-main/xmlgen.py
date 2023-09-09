@@ -1,3 +1,4 @@
+import sys
 import xml.etree.ElementTree as ET
 
 class bcolors:
@@ -16,8 +17,12 @@ def update_worker_count(xml_file, new_worker_count):
     tree.write(modified_xml_file, encoding='utf-8', xml_declaration='<?xml version="1.0" encoding="utf-8"?>')
 
 if __name__ == "__main__":
-    xml_file_name = input("Enter the XML file name: ")
-    max_worker_count = int(input("Enter the maximum number of workers: "))
+    if len(sys.argv) != 3:
+        print("Usage: python script.py [input.xml] [max_worker_count]")
+        sys.exit(1)
+
+    xml_file_name = sys.argv[1]
+    max_worker_count = int(sys.argv[2])
 
     worker_counts = [2**i for i in range(int(max_worker_count.bit_length()))]
 
@@ -25,4 +30,4 @@ if __name__ == "__main__":
         update_worker_count(xml_file_name, count)
         print(f"Modified XML for {bcolors.YELLOW}{count}{bcolors.END} workers saved.")
 
-    #print("All modifications complete.")
+    print("All modifications complete.")
