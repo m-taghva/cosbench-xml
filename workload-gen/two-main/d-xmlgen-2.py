@@ -7,24 +7,27 @@ class bcolors:
     YELLOW = '\033[1;33m'
     END = '\033[0m'
 
+# Get the path of the script itself
+script_path = os.path.abspath(__file__)
+
+# Calculate the parent directory of the script
+parent_directory = os.path.abspath(os.path.join(script_path, os.pardir))
+
 # Check if the correct number of command-line arguments are provided
 if len(sys.argv) != 3:
     print("Usage: python script.py <xml_file> <max_number>")
     exit(1)
 
 # Get the XML file path and maximum number from command-line arguments
-xml_file_path = sys.argv[1]
+xml_file_path = os.path.abspath(sys.argv[1])
 try:
     max_number = int(sys.argv[2])
 except ValueError:
     print("Invalid input for max_number. Please provide a valid number.")
     exit(1)
 
-# Get the parent directory of the current working directory
-parent_directory = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
-
-# Define the directory for saving output files
-output_directory = os.path.join(parent_directory, "all-xml")
+# Define the directory for saving output files (one level above the script directory)
+output_directory = os.path.join(parent_directory,"..", "all-xml")
 
 # Ensure the output directory exists, or create it if it doesn't
 if not os.path.exists(output_directory):
