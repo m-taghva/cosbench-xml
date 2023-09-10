@@ -20,6 +20,19 @@ except ValueError:
     print("Invalid input for max_workers. Please provide a valid number.")
     exit(1)
 
+# Normalize the XML file path to an absolute path
+xml_file_path = os.path.abspath(xml_file_path)
+
+# Get the directory containing the XML file
+xml_file_directory = os.path.dirname(xml_file_path)
+
+# Define the output directory for saving the files (one level above the XML file directory)
+output_directory = os.path.abspath(os.path.join(xml_file_directory, os.pardir, "all-xml"))
+
+# Ensure the output directory exists, or create it if it doesn't
+if not os.path.exists(output_directory):
+    os.makedirs(output_directory)
+
 # Parse the XML configuration file
 try:
     tree = ET.parse(xml_file_path)
@@ -33,16 +46,6 @@ except ET.ParseError:
 
 # Extract the original XML file name (without extension)
 original_file_name = os.path.splitext(os.path.basename(xml_file_path))[0]
-
-# Get the parent directory of the current working directory
-parent_directory = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
-
-# Define the output directory for saving the files
-output_directory = os.path.join(parent_directory, "all-xml")
-
-# Ensure the output directory exists, or create it if it doesn't
-if not os.path.exists(output_directory):
-    os.makedirs(output_directory)
 
 # Define the three scenarios
 scenarios = [
