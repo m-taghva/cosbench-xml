@@ -5,9 +5,14 @@ scripts for generating xml configuration file in cosbench a bench marking tool f
       use: # python3 customize-xml.py
       output: swift_config_sample_(n).xml
       ===========================================
-      (same-xmlgen-n.py) in workload-gen directory just edit worker number in main work stage.
-      you can send your maximum worker number to script and it can generate new xml file. it can count double from 2 until maximum-1. 
-      use: # python3 xmlgen.py 
-          Enter the XML file name: 
-          Enter the maximum number of workers: 
+      (s-xmlgen-n.py) in workload-gen directory just edit worker number in main work stage.
+      you can send your maximum worker number to script and it can generate new xml file. it can count double from 2 until maximum-1. its make same number for every main.
+      use: # python3 xmlgen.py <xml file path> <max number>
       ===========================================
+      (d-xmlgen-n.py) in workload-gen directory just edit worker number in main work stage.
+      you can send your maximum worker number to script and it can generate new xml file. it can count double from 2 until maximum. its make different number for every main. 
+      use: # python3 xmlgen.py <xml file path> <max number>
+      ===========================================
+      wl-maker.py can run all scripts of workload directory. 
+      use: # python3 wl-maker.py <path to xmlgen1.py> <path to xml file for xmlgen1> <path to xmlgen2.py> <path to xml file for xmlgen2> ... <max number>
+      ---> all output xml save in "all-xml" directory
