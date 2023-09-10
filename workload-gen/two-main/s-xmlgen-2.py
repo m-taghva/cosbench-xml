@@ -42,11 +42,11 @@ if __name__ == "__main__":
         print("Usage: python script.py [input.xml] [max_worker_count]")
         sys.exit(1)
 
-    xml_file_name = os.path.abspath(sys.argv[1])
+    xml_file_path = os.path.abspath(sys.argv[1])
     max_worker_count = int(sys.argv[2])
 
     # Create the output directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)
 
-    generate_xml(xml_file_name, max_worker_count)
+    generate_xml(xml_file_path, max_worker_count)
     print(f"{bcolors.YELLOW}Modified XML files generated{bcolors.END}")
