@@ -14,5 +14,6 @@ scripts for generating xml configuration file in cosbench a bench marking tool f
       use: # python3 xmlgen.py <xml file path> <max number>
       ===========================================
       wl-maker.py can run all scripts of workload directory. 
-      use: # python3 wl-maker.py <path to xmlgen1.py> <path to xml file for xmlgen1> <path to xmlgen2.py> <path to xml file for xmlgen2> ... <max number>
+      save your directory and max number in wl-address.txt like it's orginal structure.
+      use: # python3 wl-maker.py 
       ---> all output xml save in "all-xml" directory
