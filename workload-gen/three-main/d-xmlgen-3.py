@@ -112,6 +112,6 @@ for i, scenario in enumerate(scenarios, start=1):
         tree_copy = ET.ElementTree(new_root)
         tree_copy.write(updated_file_path)
 
-        print(f"Type{bcolors.YELLOW}{i}{bcolors.END}: XML configuration generated {bcolors.YELLOW}{updated_file_name}{bcolors.END}")
+        #print(f"Type{bcolors.YELLOW}{i}{bcolors.END}: XML configuration generated {bcolors.YELLOW}{updated_file_name}{bcolors.END}")
 
-print("All configurations have been generated.")
+#print("All configurations have been generated.")
