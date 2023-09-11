@@ -33,11 +33,11 @@ def update_worker_counts(xml_file, max_workers_main1):
         tree_copy = ET.ElementTree(new_root)
         tree_copy.write(updated_file_path)
 
-        print(f"XML configuration updated for main1={bcolors.YELLOW}{workers_main1}{bcolors.END} and main2={bcolors.YELLOW}{workers_main2}{bcolors.END} workers and saved to {updated_file_name}.")
+        #print(f"XML configuration updated for main1={bcolors.YELLOW}{workers_main1}{bcolors.END} and main2={bcolors.YELLOW}{workers_main2}{bcolors.END} workers and saved to {updated_file_name}.")
 
         workers_main1 *= 2
 
-    print(f"All configurations have been generated in the '{output_dir}' directory.")
+    #print(f"All configurations have been generated in the '{output_dir}' directory.")
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
