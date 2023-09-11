@@ -81,7 +81,7 @@ while workers_main2 <= max_number:
         tree_copy = ET.ElementTree(new_root)
         tree_copy.write(updated_file_path)
         
-        print(f"Type 1: XML configuration updated for main1={bcolors.YELLOW}1{bcolors.END} and main2={bcolors.YELLOW}{workers_main2}{bcolors.END} workers and saved to {bcolors.YELLOW}{updated_file_name}{bcolors.END}")
+        #print(f"Type 1: XML configuration updated for main1={bcolors.YELLOW}1{bcolors.END} and main2={bcolors.YELLOW}{workers_main2}{bcolors.END} workers and saved to {bcolors.YELLOW}{updated_file_name}{bcolors.END}")
     
     # Double the worker count for "main2" for the next iteration
     workers_main2 *= 2
@@ -117,7 +117,7 @@ while workers_main1 <= max_number:
         tree_copy = ET.ElementTree(new_root)
         tree_copy.write(updated_file_path)
         
-        print(f"Type 2: XML configuration updated for main1={bcolors.YELLOW}{workers_main1}{bcolors.END} and main2={bcolors.YELLOW}1{bcolors.END} workers and saved to {bcolors.YELLOW}{updated_file_name}{bcolors.END}")
+        #print(f"Type 2: XML configuration updated for main1={bcolors.YELLOW}{workers_main1}{bcolors.END} and main2={bcolors.YELLOW}1{bcolors.END} workers and saved to {bcolors.YELLOW}{updated_file_name}{bcolors.END}")
     
     # Double the worker count for "main1" for the next iteration
     workers_main1 *= 2
@@ -153,7 +153,7 @@ while workers_main2 <= max_number:
         tree_copy = ET.ElementTree(new_root)
         tree_copy.write(updated_file_path)
         
-        print(f"Type 3: XML configuration updated for main1={bcolors.YELLOW}{max_number}{bcolors.END} and main2={bcolors.YELLOW}{workers_main2}{bcolors.END} workers and saved to {bcolors.YELLOW}{updated_file_name}{bcolors.END}")
+        #print(f"Type 3: XML configuration updated for main1={bcolors.YELLOW}{max_number}{bcolors.END} and main2={bcolors.YELLOW}{workers_main2}{bcolors.END} workers and saved to {bcolors.YELLOW}{updated_file_name}{bcolors.END}")
     
     # Double the worker count for "main2" for the next iteration
     workers_main2 *= 2
@@ -189,9 +189,9 @@ while workers_main1 <= max_number:
         tree_copy = ET.ElementTree(new_root)
         tree_copy.write(updated_file_path)
         
-        print(f"Type 4: XML configuration updated for main1={bcolors.YELLOW}{workers_main1}{bcolors.END} and main2={bcolors.YELLOW}{max_number}{bcolors.END} workers and saved to {bcolors.YELLOW}{updated_file_name}{bcolors.END}")
+        #print(f"Type 4: XML configuration updated for main1={bcolors.YELLOW}{workers_main1}{bcolors.END} and main2={bcolors.YELLOW}{max_number}{bcolors.END} workers and saved to {bcolors.YELLOW}{updated_file_name}{bcolors.END}")
     
     # Double the worker count for "main1" for the next iteration
     workers_main1 *= 2
 
-print("All configurations have been generated.")
+#print("All configurations have been generated.")
