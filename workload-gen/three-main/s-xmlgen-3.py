@@ -52,4 +52,4 @@ if __name__ == "__main__":
     os.makedirs(output_dir, exist_ok=True)
 
     generate_xml(xml_file_path, max_worker_count)
-    print(f"{bcolors.YELLOW}Modified XML files generated{bcolors.END}")
+    #print(f"{bcolors.YELLOW}Modified XML files generated{bcolors.END}")
