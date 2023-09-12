@@ -25,8 +25,8 @@ max_size = int(sys.argv[2])
 with open(xml_path, "r") as file:
     xml_template = file.read()
 
-# Create a directory to store the output XML files
-output_dir = "output_files"
+# Create a directory to store the output XML files in the current directory
+output_dir = os.path.join(os.getcwd(),"..", "all-xml")
 os.makedirs(output_dir, exist_ok=True)
 
 # Start with size as 1 and double it until it exceeds the specified maximum size
@@ -41,7 +41,7 @@ while size <= max_size:
     # Replace sizes in the XML content
     xml_content = re.sub(r'sizes=c\(\d+\)KB', f'sizes=c({size})KB', xml_template)
     
-    # Write the modified XML content to a new file
+    # Write the modified XML content to a new file in the "all-xml" directory
     output_file_name = f"{os.path.splitext(os.path.basename(xml_path))[0]}-sizes-{size}.xml"
     output_file_path = os.path.join(output_dir, output_file_name)
     with open(output_file_path, "w") as file:
@@ -50,4 +50,4 @@ while size <= max_size:
     # Double the size for the next iteration
     size *= 2
 
-print(f"XML templates with sizes in powers of 2 and unique random oprefix values have been created in the '{output_dir}' directory.")
+#print(f"XML templates with sizes in powers of 2 and unique random oprefix values have been created in the '{output_dir}' directory.")
