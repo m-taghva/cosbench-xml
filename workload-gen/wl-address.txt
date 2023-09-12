@@ -16,3 +16,6 @@ three-main/sc-pgd.xml
 two-main-x3/xmlgen-pg-x3.py
 two-main-x3/sc-pg.xml
 256
+size-gen/sizexml.py
+size-gen/so-tmp.xml
+8192
