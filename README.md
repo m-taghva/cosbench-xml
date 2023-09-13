@@ -13,7 +13,13 @@ scripts for generating xml configuration file in cosbench a bench marking tool f
       you can send your maximum worker number to script and it can generate new xml file. it can count double from 2 until maximum. its make different number for every main. 
       use: # python3 xmlgen.py <xml file path> <max number>
       ===========================================
+      (sizexml.py) in size-gen directory just edit size of object in every line.
+      you can send your maximum size number to script and it can generate new xml files for variety of size . it count double from 1 to max.
+      use: # python3 sizexml.py <xml file path> <max number>
+      ===========================================
       wl-maker.py can run all scripts of workload directory. 
       save your directory and max number in wl-address.txt like it's orginal structure.
       use: # python3 wl-maker.py 
       ---> all output xml save in "all-xml" directory
+      ===========================================
+      !!! all scripts allow you write oprefix in xml template or not !!!
