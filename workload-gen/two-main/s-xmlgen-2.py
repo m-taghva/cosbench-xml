@@ -18,7 +18,7 @@ def generate_random_prefix():
 
 # Function to replace oprefix with a specified value in the XML content
 def replace_oprefix(xml_content, oprefix_value):
-    return re.sub(r'oprefix=[A-Za-z0-9]+', f'oprefix={oprefix_value}', xml_content)
+    return re.sub(r'oprefix=[A-Za-z]+', f'oprefix={oprefix_value}', xml_content)
 
 def generate_xml(xml_file, max_worker_count):
     with open(xml_file, "r") as file:
@@ -77,7 +77,7 @@ def generate_xml(xml_file, max_worker_count):
                 config = replace_oprefix(config, current_oprefix)
                 elem.set("config", config)
 
-    modified_xml_file = os.path.basename(xml_file).replace('.xml', f'-{worker_count}-{worker_count}.xml')
+    modified_xml_file = os.path.basename(xml_file).replace('.xml', f'-{max_worker_count - 1}-{max_worker_count - 1}.xml')
     modified_xml_path = os.path.join(output_dir, modified_xml_file)
 
     tree.write(modified_xml_path, encoding='utf-8', xml_declaration='<?xml version="1.0" encoding="UTF-8" ?>')
