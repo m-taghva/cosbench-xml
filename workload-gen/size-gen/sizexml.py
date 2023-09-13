@@ -26,7 +26,7 @@ with open(xml_path, "r") as file:
     xml_template = file.read()
 
 # Create a directory to store the output XML files in the current directory
-output_dir = os.path.join(os.getcwd(),"..", "all-xml")
+output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "all-xml"))
 os.makedirs(output_dir, exist_ok=True)
 
 # Start with size as 1 and double it until it exceeds the specified maximum size
