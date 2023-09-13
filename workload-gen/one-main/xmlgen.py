@@ -55,6 +55,6 @@ if __name__ == "__main__":
 
     for count in worker_counts:
         update_worker_count(xml_file_path, count)
-        print(f"Modified XML for {bcolors.YELLOW}{count}{bcolors.END} workers saved in {output_dir}.")
+        #print(f"Modified XML for {bcolors.YELLOW}{count}{bcolors.END} workers saved in {output_dir}.")
 
-    print("All modifications complete.")
+    #print("All modifications complete.")
