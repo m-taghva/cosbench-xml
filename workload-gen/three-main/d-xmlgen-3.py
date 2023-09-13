@@ -2,10 +2,21 @@ import xml.etree.ElementTree as ET
 import copy
 import os
 import sys
+import random
+import string
+import re
 
 class bcolors:
     YELLOW = '\033[1;33m'
     END = '\033[0m'
+
+# Function to generate a random prefix of length up to 10 characters from A to Z
+def random_prefix():
+    return ''.join(random.choice(string.ascii_uppercase) for _ in range(random.randint(1, 10)))
+
+# Function to replace oprefix with a random value in the XML content
+def replace_oprefix(xml_content):
+    return re.sub(r'oprefix=[A-Za-z]+', f'oprefix={random_prefix()}', xml_content)
 
 # Check if the correct number of command-line arguments are provided
 if len(sys.argv) != 3:
@@ -33,9 +44,12 @@ output_directory = os.path.abspath(os.path.join(xml_file_directory, os.pardir, "
 if not os.path.exists(output_directory):
     os.makedirs(output_directory)
 
+with open(xml_file_path, "r") as file:
+    xml_template = file.read()
+
 # Parse the XML configuration file
 try:
-    tree = ET.parse(xml_file_path)
+    tree = ET.ElementTree(ET.fromstring(xml_template))
     root = tree.getroot()
 except FileNotFoundError:
     print("File not found. Please provide a valid XML file path.")
@@ -63,11 +77,18 @@ def generate_doubles(max_value):
         if num <= max_value:
             doubles.append(num)
     return doubles
-
+ 
 for i, scenario in enumerate(scenarios, start=1):
     main1_range = scenario["main1_range"]
     main2_range = scenario["main2_range"]
     main3_range = scenario["main3_range"]
+
+    tree = ET.ElementTree(ET.fromstring(xml_template))
+    root = tree.getroot()
+
+    # Replace oprefix with a random value
+    xml_template = replace_oprefix(xml_template)
+
 
     # Generate a list of worker values counting in doubles
     worker_values = generate_doubles(max_workers)
@@ -75,6 +96,12 @@ for i, scenario in enumerate(scenarios, start=1):
     for workers in worker_values:
         # Create a deep copy of the root element for each iteration
         new_root = copy.deepcopy(root)
+        
+        tree = ET.ElementTree(ET.fromstring(xml_template))
+        root = tree.getroot()
+
+        # Replace oprefix with a random value
+        xml_template = replace_oprefix(xml_template)
 
         # Find and update the number of workers in main1
         for work in new_root.findall(".//work[@name='main1']"):
